@@ -1,4 +1,4 @@
-![image](./public/logo.png)
+![image](https://github.com/user-attachments/assets/c84245e5-5f65-4f7a-8903-b56273867362)
 
 <h2 align="center">
   <strong>Simple and leightweight API Mock Server via CLI</strong>
