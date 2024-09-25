@@ -32,6 +32,7 @@ func NewModel(m *model.Endpoints) Model {
 	l := list.New(items, delegate, 80, 14)
 	l.Title = "Your Mocked Endpoints"
 	l.SetShowStatusBar(false)
+	l.SetFilteringEnabled(false)
 
 	// Initialize text inputs
 	apiInput := textinput.New()
