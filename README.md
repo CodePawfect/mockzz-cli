@@ -29,7 +29,14 @@ Mockzz-CLI is a command-line tool that enables users to easily create and manage
 #### Run your mock server with a single command
 ![image](./public/start-server.gif)
 
-change server port with mockzz start -p :8090
+change server port with:
+```bash
+mockzz start -p 8090
+```
+or
+```bash
+mockzz start --port 8090
+```
 
 ## Install
 ### Option 1: Using Prebuilt Binary
