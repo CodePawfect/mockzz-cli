@@ -55,8 +55,29 @@ var startCmd = &cobra.Command{
 		}
 
 		mux := http.NewServeMux()
+
+		for api, responseFile := range endpoints {
+			handlerFunc := createHandlerFunc(responseFile)
+			mux.HandleFunc(api, handlerFunc)
+		}
+
 		internals.StartHttpServer(mux, cmd.Flag("port").Value.String())
 	},
+}
+
+func createHandlerFunc(responseFilePath string) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		data, err := os.ReadFile(responseFilePath)
+		if err != nil {
+			fmt.Printf("Error reading response file %s: %v\n", responseFilePath, err)
+			w.WriteHeader(http.StatusInternalServerError)
+			return
+		}
+
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(http.StatusOK)
+		w.Write(data)
+	}
 }
 
 // readEndpoints reads the endpoints from the given file and returns a map[api]responseFile
