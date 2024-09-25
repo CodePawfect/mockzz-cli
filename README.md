@@ -30,7 +30,15 @@ Mockzz-CLI is a command-line tool that enables users to easily create and manage
 ![image](./public/start-server.gif)
 
 ## Install
-### Build binary from Source
+### Option 1: Using Prebuilt Binary
+Download the Prebuilt Binary: Download the binary artifact for your system from the releases page from this Repository.
+
+Move Binary to Your PATH: Move the binary to a directory that is included in your system's PATH. This allows you to run mockzz from any location in your terminal.
+```bash
+sudo mv mockzz /usr/local/bin/
+```
+
+### Option 2: Build binary from Source
 Install Go: Make sure you have Go installed (version 1.23.0 or later).
 Clone the Repository: Clone the source code repository from GitHub.
 ```bash
