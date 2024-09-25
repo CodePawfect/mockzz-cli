@@ -65,5 +65,14 @@ Move Binary to Your PATH: Move the generated mockzz binary to a directory in you
 sudo mv mockzz /usr/local/bin/
 ```
 
+## Contributing
+
+We welcome contributions from everyone! Whether you're fixing bugs, improving documentation, or suggesting new features, your help is appreciated.
+
+To get started, please check out our [CONTRIBUTING.md](CONTRIBUTING.md) guide.
+
+Feel free to open an issue or submit a pull request. Let's collaborate and make this project better together!
+
+
 ## License
 Licensed under [MIT License](./LICENSE.txt)
