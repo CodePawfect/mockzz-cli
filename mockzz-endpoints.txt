@@ -1,0 +1,4 @@
+GET /api/v1/users:/mock/data/users.json
+GET /api/v1/health:/mock/data/health.json
+GET /api/v1/materials:/mock/data/materials.json
+GET /some/new/api:/mock/data/api.json
