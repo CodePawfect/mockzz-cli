@@ -2,7 +2,7 @@
 
 <div style="text-align: center;">
   <h1>
-    Introducing the Ultimate Golang Mock Server
+    Introducing a leightweight Go API-Mock Server managed via CLI
   </h1>
 </div>
 
