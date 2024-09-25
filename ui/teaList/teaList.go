@@ -3,6 +3,7 @@ package ui
 import (
 	"fmt"
 	"os"
+	"strings"
 
 	"github.com/CodePawfect/mockzz-cli/model"
 	"github.com/charmbracelet/bubbles/list"
@@ -71,6 +72,29 @@ func (m Model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 					m.apiInput.Blur()
 					m.fileInput.Focus()
 				} else if m.fileInput.Focused() {
+					apiValue := m.apiInput.Value()
+
+					// Validate inputs
+					if apiValue == "" {
+						fmt.Println("API or file input cannot be empty")
+						break
+					}
+
+					// Check if the file contains valid HTTP methods
+					validMethods := []string{"PUT", "DELETE", "POST", "GET"}
+					valid := false
+					for _, method := range validMethods {
+						if strings.Contains(apiValue, method) {
+							valid = true
+							break
+						}
+					}
+
+					if !valid {
+						fmt.Println("File input must contain at least one valid HTTP method (PUT, DELETE, POST, GET)")
+						break
+					}
+
 					// Create new endpoint and add it
 					newEndpoint := model.Endpoint{
 						API:          m.apiInput.Value(),

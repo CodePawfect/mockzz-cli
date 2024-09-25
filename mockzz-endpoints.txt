@@ -1,1 +1,1 @@
-GET /test/users:./testResponse.json
+GET /api/users:./users.json

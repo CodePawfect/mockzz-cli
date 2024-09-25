@@ -1,13 +1,12 @@
 package cmd
 
 import (
-	"bufio"
 	"fmt"
 	"net/http"
 	"os"
-	"strings"
 
 	"github.com/CodePawfect/mockzz-cli/internals"
+	"github.com/CodePawfect/mockzz-cli/model"
 	"github.com/charmbracelet/lipgloss"
 	"github.com/spf13/cobra"
 )
@@ -39,7 +38,7 @@ var startCmd = &cobra.Command{
 	Run: func(cmd *cobra.Command, args []string) {
 		fmt.Printf("%s\n", logoStyle.Render(logo))
 
-		endpoints, err := readEndpoints("mockzz-endpoints.txt")
+		endpoints, err := model.ReadEndpoints("mockzz-endpoints.txt")
 		if err != nil {
 			fmt.Println("Error reading endpoints:", err)
 			return
@@ -78,42 +77,4 @@ func createHandlerFunc(responseFilePath string) http.HandlerFunc {
 		w.WriteHeader(http.StatusOK)
 		w.Write(data)
 	}
-}
-
-// readEndpoints reads the endpoints from the given file and returns a map[api]responseFile
-func readEndpoints(filename string) (map[string]string, error) {
-	endpoints := make(map[string]string)
-
-	file, err := os.Open(filename)
-	if err != nil {
-		return nil, err
-	}
-	defer file.Close()
-
-	scanner := bufio.NewScanner(file)
-	for scanner.Scan() {
-		line := scanner.Text()
-		// Skip empty lines and lines without a colon
-		if strings.TrimSpace(line) == "" || !strings.Contains(line, ":") {
-			continue
-		}
-
-		// Split the line into API and response file
-		parts := strings.SplitN(line, ":", 2)
-		if len(parts) != 2 {
-			fmt.Printf("Invalid line format (skipping): %s\n", line)
-			continue
-		}
-		api := strings.TrimSpace(parts[0])
-		responseFile := strings.TrimSpace(parts[1])
-
-		// Add to the map
-		endpoints[api] = responseFile
-	}
-
-	if err := scanner.Err(); err != nil {
-		return nil, err
-	}
-
-	return endpoints, nil
 }

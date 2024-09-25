@@ -20,7 +20,7 @@ var listCmd = &cobra.Command{
 	Short: "Shows an interactive list of mocked APIs",
 	Long:  `This command shows an interactive list of all the mocked APIs that have been created. It allows the user to view, edit, and delete the APIs.`,
 	Run: func(cmd *cobra.Command, args []string) {
-		dataModel := model.NewModel()
+		dataModel := model.LoadModel()
 
 		uiModel := ui.NewModel(dataModel)
 
