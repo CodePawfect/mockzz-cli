@@ -84,7 +84,7 @@ func createHandlerFunc(responseFilePath string) http.HandlerFunc {
 	}
 }
 
-func isValidPort(portStr string) bool {
+func isValidPort(portStr string) {
 	port, err := strconv.Atoi(portStr)
 	if err != nil {
 		log.Fatalf("Error converting port to integer: %v", err)
@@ -93,5 +93,4 @@ func isValidPort(portStr string) bool {
 	if port < 0 || port > 65535 {
 		log.Fatalf("Port is not in range >= 0 && <= 65535: %v", err)
 	}
-	return false
 }
