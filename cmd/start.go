@@ -2,8 +2,10 @@ package cmd
 
 import (
 	"fmt"
+	"log"
 	"net/http"
 	"os"
+	"strconv"
 
 	"github.com/CodePawfect/mockzz-cli/internals"
 	"github.com/CodePawfect/mockzz-cli/model"
@@ -60,7 +62,10 @@ var startCmd = &cobra.Command{
 			mux.HandleFunc(api, handlerFunc)
 		}
 
-		internals.StartHttpServer(mux, cmd.Flag("port").Value.String())
+		port := cmd.Flag("port").Value.String()
+		isValidPort(port)
+
+		internals.StartHttpServer(mux, port)
 	},
 }
 
@@ -77,4 +82,16 @@ func createHandlerFunc(responseFilePath string) http.HandlerFunc {
 		w.WriteHeader(http.StatusOK)
 		w.Write(data)
 	}
+}
+
+func isValidPort(portStr string) bool {
+	port, err := strconv.Atoi(portStr)
+	if err != nil {
+		log.Fatalf("Error converting port to integer: %v", err)
+	}
+
+	if port >= 0 && port <= 65535 {
+		log.Fatalf("Port is not in range >= 0 && <= 65535: %v", err)
+	}
+	return false
 }
