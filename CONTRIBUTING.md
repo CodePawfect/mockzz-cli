@@ -11,7 +11,7 @@ Thank you for your interest in contributing to this project! Here are a few step
 5. Push the changes to your branch.
 6. Submit a pull request.
 
-Please make sure your code follows our coding standards and is well-tested.
+Please make sure your code follows coding standards and is well-tested.
 
 ## Reporting Issues
 
