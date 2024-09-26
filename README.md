@@ -2,7 +2,7 @@
 
 <div style="text-align: center;">
   <h1>
-    Introducing a leightweight Go API-Mock Server managed via CLI
+    Introducing a lightweight Go API-Mock Server managed via CLI
   </h1>
 </div>
 
