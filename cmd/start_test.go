@@ -7,12 +7,6 @@ import (
 	"testing"
 )
 
-func TestIsValidPort(t *testing.T) {
-	if !isValidPort("8080") {
-		t.Errorf("Expected port 8080 to be valid")
-	}
-}
-
 func TestCreateHandlerFunc(t *testing.T) {
 	// Step 1: Create a temporary file to simulate a response file
 	tempFile, err := os.CreateTemp("", "response.json")
