@@ -73,8 +73,15 @@ func ReadEndpoints(filename string) (map[string]string, error) {
 			fmt.Printf("Invalid line format (skipping): %s\n", line)
 			continue
 		}
+
+		// Trim and check that both the API and response file are not empty
 		api := strings.TrimSpace(parts[0])
 		responseFile := strings.TrimSpace(parts[1])
+
+		if api == "" || responseFile == "" {
+			fmt.Printf("Skipping invalid line with empty API or response file: %s\n", line)
+			continue
+		}
 
 		// Add to the map
 		endpoints[api] = responseFile
