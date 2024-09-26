@@ -2,7 +2,7 @@
 
 <div style="text-align: center;">
   <h1>
-    Introducing a leightweight Go API-Mock Server managed via CLI
+    Introducing a lightweight Go API-Mock Server managed via CLI
   </h1>
 </div>
 
@@ -11,7 +11,7 @@ Mockzz-CLI is a command-line tool that enables users to easily create and manage
 ### Why Would I use this?
 
 - Easy to set up and install
-- Leightweight, interactiv CLI and fast
+- Lightweight, interactiv CLI and fast
 
 ## Table of Contents
 
