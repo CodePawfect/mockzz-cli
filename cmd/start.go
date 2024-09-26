@@ -90,7 +90,7 @@ func isValidPort(portStr string) bool {
 		log.Fatalf("Error converting port to integer: %v", err)
 	}
 
-	if port >= 0 && port <= 65535 {
+	if port < 0 || port > 65535 {
 		log.Fatalf("Port is not in range >= 0 && <= 65535: %v", err)
 	}
 	return false
